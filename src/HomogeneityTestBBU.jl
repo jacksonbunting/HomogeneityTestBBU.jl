@@ -1,5 +1,8 @@
 module HomogeneityTestBBU
 
-# Write your package code here.
+include("Euler_algorithm.jl")
+include("homogeneity_test.jl")
+
+export homogeneity_test_fn, euler_algorithm
 
 end
