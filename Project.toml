@@ -1,7 +1,7 @@
 name = "HomogeneityTestBBU"
 uuid = "902b4cfc-36dd-46ec-9aee-5fae5b5d5a99"
 authors = ["bunting-econ <jbunting@tamu.edu> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
