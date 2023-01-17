@@ -43,7 +43,7 @@ function homogeneity_test_fn(;
     end
     SS_list = vcat(SS_list, hcat(S_data[:,end], zeros(Int, local_n)) )
     
-    S_data_permuted = copy(S_data);juli
+    S_data_permuted = copy(S_data);
     A_data_permuted = copy(A_data);
 
     perm_TestStat = fill(NaN, K, numb_statistics);
