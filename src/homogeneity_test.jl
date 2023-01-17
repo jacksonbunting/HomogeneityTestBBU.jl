@@ -67,7 +67,7 @@ function homogeneity_test_fn(;
             ss_ind = unique(SS_list, dims=1)[ind, :]'
             ss_ind = all(SS_list .== ss_ind, dims= 2)
             ss_ind = reshape(ss_ind, size(S_data))
-            A_data_permuted[ss_ind] = shuffle(A_data[ss_ind])
+            A_data_permuted[ss_ind] = Random.shuffle(A_data[ss_ind])
         end
         
         perm_TestStat[k,:] .= test_stat_fn(S_data_permuted, A_data_permuted);
