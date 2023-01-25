@@ -31,14 +31,19 @@ function homogeneity_test_fn(;
         println("***Check that X is a tuple***")
     end
     
-    if !all(size(S_data) .== size(A_data) )
+    if !all(size(S_data) .== size(A_data) ) & !isempty(A_data)
         println("***S and A are not the same dimension***")
     end
     
     if !(K>0)
         println("***Choose K > 0***")
     end
-    
+
+    if S_only
+        test_stat = test_stat_fn(S_data)
+    else
+        test_stat = test_stat_fn(S_data, A_data)
+    end
     numb_statistics = length(test_stat)
     
     local_n, local_t = size(S_data);
