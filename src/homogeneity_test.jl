@@ -6,7 +6,7 @@ This function implements the homogeneity test of Bugni, Bunting and Ura (2023).
 
 ## Arguments
 - `X::Tuple`: The data in the form of tuple ``X=(S, A)``, where A may be empty.
-- `test_stat_fn::Function`: A function that takes the arguments ``S`` and ``A`` (or ``S`` only if ``A=[~]``) and returns a (vector of) test statistics.
+- `test_stat_fn::Function`: A function that takes the arguments ``S`` and ``A`` (or ``S`` only, if ``A=[~]``) and returns a (vector of) test statistics.
 - `K::Int`: An integer indicating the length of the MCMC chain. Defaults to 10,000.
 - `verbose::Boolean`: A Boolean indicating if additional output is to be returned. Defaults to false.  
 
@@ -27,7 +27,7 @@ function homogeneity_test_fn(;
 
     S_only = isempty(A_data)
     
-    if !(isempty(A_data) | (size(A, 1) > 0))
+    if !(isempty(A_data) | (size(A_data, 1) > 0))
         println("***Check that X is a tuple***")
     end
     
@@ -37,12 +37,6 @@ function homogeneity_test_fn(;
     
     if !(K>0)
         println("***Choose K > 0***")
-    end
-
-    S_only = isempty(A_data)
-    
-    if !(isempty(A_data) | (size(A, 1) > 0))
-        println("***Check that X is a tuple***")
     end
     
     numb_statistics = length(test_stat)
