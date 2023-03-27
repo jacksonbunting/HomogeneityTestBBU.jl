@@ -21,7 +21,7 @@ function homogeneity_test_fn(;
     X::Tuple, ## The data
     test_stat_fn::Function,  ## The test statistic
     K::Int=10000, ## The length of the MCMC chain to generate
-    verbose::Vector{String} = [],
+    verbose::Vector{String} = Vector(String[]),
     A_trivial::Bool = false
     )
 
