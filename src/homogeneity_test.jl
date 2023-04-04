@@ -50,12 +50,14 @@ function homogeneity_test_fn(;
     
     local_n, local_t = size(S_data);
 
-    SS_list =    hcat(S_data[:,1],S_data[:,2])     
-    for t = 2:(local_t-1)
-        SS_list = vcat(SS_list, hcat(S_data[:,t],S_data[:,t+1]) );
+    SS_list =    hcat(S_data[:,1],S_data[:,2])
+    if local_t > 2
+        for t = 2:(local_t-1)
+            SS_list = vcat(SS_list, hcat(S_data[:,t],S_data[:,t+1]) );
+        end
+        SS_list = vcat(SS_list, hcat(S_data[:,end], zeros(Int, local_n)) )
     end
-    SS_list = vcat(SS_list, hcat(S_data[:,end], zeros(Int, local_n)) )
-    
+        
     S_data_permuted = copy(S_data);
     if !S_only
         A_data_permuted = copy(A_data);
@@ -80,7 +82,7 @@ function homogeneity_test_fn(;
         if !S_only
             for ind in axes(unique(SS_list, dims=1), 1)
                 ss_ind = unique(SS_list, dims=1)[ind, :]'
-                if (A_trivial) || (A_trivial && ss_ind[2]==0)
+                if (!A_trivial) || (A_trivial && ss_ind[2]==0)
                     ss_perm_ind = BitArray(undef, size(S_data_permuted))
                     S_perm_temp = hcat(S_data_permuted, zeros(Int, size(S_data_permuted, 1)))
                     for i in axes(ss_perm_ind, 1)
@@ -107,7 +109,7 @@ function homogeneity_test_fn(;
 
     pvalue = fill(NaN, numb_statistics);
     for ind in 1:numb_statistics
-        pvalue[ind] = sum(perm_TestStat[:,ind] .>= test_stat[ind])/K; 
+        pvalue[ind] = sum(perm_TestStat[:,ind] .>= test_stat[ind])/ K;
     end
 
     if "p value" ∈ lowercase.(verbose)
