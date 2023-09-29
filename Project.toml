@@ -1,16 +1,15 @@
 name = "HomogeneityTestBBU"
 uuid = "902b4cfc-36dd-46ec-9aee-5fae5b5d5a99"
-authors = ["bunting-econ <jbunting@tamu.edu> and contributors"]
-version = "0.3.0"
+authors = ["jacksonbunting <jbunting@tamu.edu> and contributors"]
+version = "0.3.1"
 
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [compat]
-julia = "1.8"
-Documenter = "0.27.23"
-
+julia = "1.9"
+Documenter = "1.1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

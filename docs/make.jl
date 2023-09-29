@@ -8,5 +8,5 @@ makedocs(
                 "Home" => "index.md"
                ])
 deploydocs(
-    repo="github.com/bunting-econ/HomogeneityTestBBU.jl.git",
+    repo="github.com/jacksonbunting/HomogeneityTestBBU.jl.git",
 )
